@@ -5,7 +5,9 @@
  */
 package gov.nasa.worldwind.wms;
 
-import gov.nasa.worldwind.util.Logging;
+import android.util.Log;
+
+import gov.nasa.worldwind.util.Messages;
 
 import java.net.*;
 
@@ -35,8 +37,8 @@ public final class CapabilitiesRequest extends Request
 
         if (uri == null)
         {
-            String message = Logging.getMessage("nullValue.URIIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.URIIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
     }
@@ -56,15 +58,15 @@ public final class CapabilitiesRequest extends Request
 
         if (uri == null)
         {
-            String message = Logging.getMessage("nullValue.URIIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.URIIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
         if (service == null)
         {
-            String message = Logging.getMessage("nullValue.WMSServiceNameIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.WMSServiceNameIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
     }

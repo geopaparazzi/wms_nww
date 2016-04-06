@@ -4,7 +4,9 @@
 
 package gov.nasa.worldwind.util.xml;
 
-import gov.nasa.worldwind.util.Logging;
+import android.util.Log;
+
+import gov.nasa.worldwind.util.Messages;
 
 import javax.xml.XMLConstants;
 import java.lang.reflect.Constructor;
@@ -55,8 +57,8 @@ public class XMLEventParserContextFactory
             }
             catch (NoSuchMethodException e)
             {
-                String message = Logging.getMessage("XML.NoCopyConstructor");
-                Logging.error(message);
+                String message = Messages.getMessage("XML.NoCopyConstructor");
+                Log.e("NWW_ANDROID", message);
                 throw new IllegalArgumentException(message);
             }
         }
@@ -91,15 +93,15 @@ public class XMLEventParserContextFactory
     {
         if (mimeTypes == null || mimeTypes.length == 0)
         {
-            String message = Logging.getMessage("nullValue.MimeTypeListIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.MimeTypeListIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
         if (prototypeContext == null)
         {
-            String message = Logging.getMessage("nullValue.ParserContextIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.ParserContextIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -122,15 +124,15 @@ public class XMLEventParserContextFactory
     {
         if (mimeTypes == null || mimeTypes.length == 0)
         {
-            String message = Logging.getMessage("nullValue.MimeTypeListIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.MimeTypeListIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
         if (prototypeContext == null)
         {
-            String message = Logging.getMessage("nullValue.ParserContextIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.ParserContextIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -159,8 +161,8 @@ public class XMLEventParserContextFactory
     {
         if (mimeType == null)
         {
-            String message = Logging.getMessage("nullValue.MimeTypeIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.MimeTypeIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -181,8 +183,8 @@ public class XMLEventParserContextFactory
                         }
                         catch (Exception e)
                         {
-                            String message = Logging.getMessage("XML.ExceptionCreatingParserContext", e.getMessage());
-                            Logging.warning(message);
+                            String message = Messages.getMessage("XML.ExceptionCreatingParserContext", e.getMessage());
+                            Log.w("NWW_ANDROID", message);
                             // continue on to subsequent entries
                         }
                 }

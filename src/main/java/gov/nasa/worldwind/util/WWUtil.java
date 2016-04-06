@@ -17,6 +17,8 @@
  */
 package gov.nasa.worldwind.util;
 
+import android.util.Log;
+
 import java.lang.reflect.*;
 
 /**
@@ -60,8 +62,8 @@ public class WWUtil
     {
         if (s == null)
         {
-            String message = Logging.getMessage("nullValue.StringIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.StringIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -76,8 +78,8 @@ public class WWUtil
         }
         catch (NumberFormatException e)
         {
-            String message = Logging.getMessage("generic.ConversionError", s);
-            Logging.error(message, e);
+            String message = Messages.getMessage("generic.ConversionError", s);
+            Log.e("NWW_ANDROID", message, e);
             return null;
         }
     }
@@ -95,8 +97,8 @@ public class WWUtil
     {
         if (s == null)
         {
-            String message = Logging.getMessage("nullValue.StringIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.StringIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -111,8 +113,8 @@ public class WWUtil
         }
         catch (NumberFormatException e)
         {
-            String message = Logging.getMessage("generic.ConversionError", s);
-            Logging.error(message, e);
+            String message = Messages.getMessage("generic.ConversionError", s);
+            Log.e("NWW_ANDROID", message, e);
             return null;
         }
     }
@@ -130,8 +132,8 @@ public class WWUtil
     {
         if (s == null)
         {
-            String message = Logging.getMessage("nullValue.StringIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.StringIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -146,8 +148,8 @@ public class WWUtil
         }
         catch (NumberFormatException e)
         {
-            String message = Logging.getMessage("generic.ConversionError", s);
-            Logging.error(message, e);
+            String message = Messages.getMessage("generic.ConversionError", s);
+            Log.e("NWW_ANDROID", message, e);
             return null;
         }
     }
@@ -165,8 +167,8 @@ public class WWUtil
     {
         if (s == null)
         {
-            String message = Logging.getMessage("nullValue.StringIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.StringIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -184,8 +186,8 @@ public class WWUtil
         }
         catch (NumberFormatException e)
         {
-            String message = Logging.getMessage("generic.ConversionError", s);
-            Logging.error(message, e);
+            String message = Messages.getMessage("generic.ConversionError", s);
+            Log.e("NWW_ANDROID", message, e);
             return null;
         }
     }
@@ -203,8 +205,8 @@ public class WWUtil
     {
         if (s == null)
         {
-            String message = Logging.getMessage("nullValue.StringIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.StringIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -220,8 +222,8 @@ public class WWUtil
         }
         catch (NumberFormatException e)
         {
-            String message = Logging.getMessage("generic.ConversionError", s);
-            Logging.error(message, e);
+            String message = Messages.getMessage("generic.ConversionError", s);
+            Log.e("NWW_ANDROID", message, e);
             return null;
         }
     }
@@ -350,15 +352,15 @@ public class WWUtil
     {
         if (parent == null)
         {
-            String msg = Logging.getMessage("nullValue.ParentIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.ParentIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (propertyName == null)
         {
-            String msg = Logging.getMessage("nullValue.PropertyNameIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.PropertyNameIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 

@@ -50,11 +50,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 /**
  * @author Nicola Dorigatti
+ * @author Andrea Antonello - adaption for geopaparazzi
  */
 public class AddWMSDialog extends DialogFragment {
     private static final String TAG = "AddWMSDialog";
@@ -119,7 +121,7 @@ public class AddWMSDialog extends DialogFragment {
         mainLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
         final EditText urlEditText = (EditText) view.findViewById(R.id.wms_url_et);
         urlEditText.setText(defaultWMSURL);
-        final Button getCapabilitiesButton = (Button) view.findViewById(R.id.get_capabilities_btn);
+        final ImageButton getCapabilitiesButton = (ImageButton) view.findViewById(R.id.get_capabilities_btn);
         getCapabilitiesButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

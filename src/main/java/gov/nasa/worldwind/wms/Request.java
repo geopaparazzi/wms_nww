@@ -17,7 +17,9 @@
  */
 package gov.nasa.worldwind.wms;
 
-import gov.nasa.worldwind.util.Logging;
+import android.util.Log;
+
+import gov.nasa.worldwind.util.Messages;
 import gov.nasa.worldwind.util.WWUtil;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -71,7 +73,7 @@ public abstract class Request {
 			try {
 				this.setUri(uri);
 			} catch (URISyntaxException e) {
-				Logging.verbose(Logging.getMessage("generic.URIInvalid", uri.toString()));
+				Log.v("NWW_ANDROID", Messages.getMessage("generic.URIInvalid", uri.toString()));
 				throw e;
 			}
 		}
@@ -91,8 +93,8 @@ public abstract class Request {
 	 */
 	public Request(Request sourceRequest) throws URISyntaxException {
 		if (sourceRequest == null) {
-			String message = Logging.getMessage("nullValue.CopyConstructorSourceIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.CopyConstructorSourceIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -107,8 +109,8 @@ public abstract class Request {
 
 	private void copyParamsTo(Request destinationRequest) {
 		if (destinationRequest == null) {
-			String message = Logging.getMessage("nullValue.CopyTargetIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.CopyTargetIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -119,16 +121,16 @@ public abstract class Request {
 
 	protected void setUri(URI uri) throws URISyntaxException {
 		if (uri == null) {
-			String message = Logging.getMessage("nullValue.URIIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.URIIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
 		try {
 			this.uri = new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), uri.getPath(), this.buildQueryString(uri.getQuery()), null);
 		} catch (URISyntaxException e) {
-			String message = Logging.getMessage("generic.URIInvalid", uri.toString());
-			Logging.verbose(message);
+			String message = Messages.getMessage("generic.URIInvalid", uri.toString());
+			Log.v("NWW_ANDROID", message);
 			throw e;
 		}
 	}
@@ -143,8 +145,8 @@ public abstract class Request {
 
 	public void setVersion(String version) {
 		if (version == null) {
-			String message = Logging.getMessage("nullValue.WMSVersionIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.WMSVersionIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -157,8 +159,8 @@ public abstract class Request {
 
 	public void setService(String service) {
 		if (service == null) {
-			String message = Logging.getMessage("nullValue.WMSServiceNameIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.WMSServiceNameIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -179,8 +181,8 @@ public abstract class Request {
 		try {
 			return new URI(this.uri.getScheme(), this.uri.getUserInfo(), this.uri.getHost(), this.uri.getPort(), uri.getPath(), this.buildQueryString(uri.getQuery()), null);
 		} catch (URISyntaxException e) {
-			String message = Logging.getMessage("generic.URIInvalid", uri.toString());
-			Logging.verbose(message);
+			String message = Messages.getMessage("generic.URIInvalid", uri.toString());
+			Log.v("NWW_ANDROID", message);
 			throw e;
 		}
 	}

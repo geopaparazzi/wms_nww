@@ -6,8 +6,10 @@
 
 package gov.nasa.worldwind.ogc;
 
+import android.util.Log;
+
 import gov.nasa.worldwind.avlist.AVList;
-import gov.nasa.worldwind.util.Logging;
+import gov.nasa.worldwind.util.Messages;
 import gov.nasa.worldwind.util.WWUtil;
 import gov.nasa.worldwind.util.xml.AbstractXMLEventParser;
 import gov.nasa.worldwind.util.xml.XMLEvent;
@@ -42,8 +44,8 @@ public class OGCBoundingBox extends AbstractXMLEventParser {
 			bbox.resx = resx != null && !resx.equals("") ? Double.parseDouble(resx) : 0;
 			bbox.resy = resy != null && !resy.equals("") ? Double.parseDouble(resy) : 0;
 		} catch (NumberFormatException e) {
-			String message = Logging.getMessage("XML.ImproperDataType");
-			Logging.error(message);
+			String message = Messages.getMessage("XML.ImproperDataType");
+			Log.e("NWW_ANDROID", message);
 			throw e;
 		}
 

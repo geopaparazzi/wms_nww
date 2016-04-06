@@ -17,7 +17,9 @@
  */
 package gov.nasa.worldwind.geom;
 
-import gov.nasa.worldwind.util.Logging;
+import android.util.Log;
+
+import gov.nasa.worldwind.util.Messages;
 
 /**
  * Edited By: Nicola Dorigatti, Trilogis
@@ -36,14 +38,14 @@ public class LatLon {
 
 	public LatLon(Angle latitude, Angle longitude) {
 		if (latitude == null) {
-			String msg = Logging.getMessage("nullValue.LatitudeIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LatitudeIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (longitude == null) {
-			String msg = Logging.getMessage("nullValue.LongitudeIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LongitudeIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -77,14 +79,14 @@ public class LatLon {
 	 */
 	public static LatLon interpolateGreatCircle(double amount, LatLon lhs, LatLon rhs) {
 		if (lhs == null) {
-			String msg = Logging.getMessage("nullValue.LhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhs == null) {
-			String msg = Logging.getMessage("nullValue.RhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.RhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -117,14 +119,14 @@ public class LatLon {
 	 */
 	public static LatLon interpolateRhumb(double amount, LatLon lhs, LatLon rhs) {
 		if (lhs == null) {
-			String msg = Logging.getMessage("nullValue.LhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhs == null) {
-			String msg = Logging.getMessage("nullValue.RhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.RhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -156,14 +158,14 @@ public class LatLon {
 	 */
 	public static Angle greatCircleAzimuth(LatLon lhs, LatLon rhs) {
 		if (lhs == null) {
-			String msg = Logging.getMessage("nullValue.LhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhs == null) {
-			String msg = Logging.getMessage("nullValue.RhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.RhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 		double lat1 = lhs.latitude.radians;
@@ -202,14 +204,14 @@ public class LatLon {
 	 */
 	public static Angle greatCircleDistance(LatLon lhs, LatLon rhs) {
 		if (lhs == null) {
-			String msg = Logging.getMessage("nullValue.LhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhs == null) {
-			String msg = Logging.getMessage("nullValue.RhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.RhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -245,20 +247,20 @@ public class LatLon {
 	 */
 	public static LatLon greatCircleEndPosition(LatLon location, Angle greatCircleAzimuth, Angle pathLength) {
 		if (location == null) {
-			String msg = Logging.getMessage("nullValue.LocationIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LocationIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (greatCircleAzimuth == null) {
-			String msg = Logging.getMessage("nullValue.AzimuthIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.AzimuthIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (pathLength == null) {
-			String msg = Logging.getMessage("nullValue.PathLengthIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.PathLengthIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -282,8 +284,8 @@ public class LatLon {
 
 	public static boolean locationsCrossDateline(LatLon p1, LatLon p2) {
 		if (p1 == null || p2 == null) {
-			String msg = Logging.getMessage("nullValue.LocationIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LocationIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -311,14 +313,14 @@ public class LatLon {
 	 */
 	public static Angle rhumbAzimuth(LatLon lhs, LatLon rhs) {
 		if (lhs == null) {
-			String msg = Logging.getMessage("nullValue.LhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhs == null) {
-			String msg = Logging.getMessage("nullValue.RhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.RhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -359,14 +361,14 @@ public class LatLon {
 	 */
 	public static Angle rhumbDistance(LatLon lhs, LatLon rhs) {
 		if (lhs == null) {
-			String msg = Logging.getMessage("nullValue.LhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhs == null) {
-			String msg = Logging.getMessage("nullValue.RhsIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.RhsIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -411,20 +413,20 @@ public class LatLon {
 	 */
 	public static LatLon rhumbEndPosition(LatLon location, Angle rhumbAzimuth, Angle pathLength) {
 		if (location == null) {
-			String msg = Logging.getMessage("nullValue.LocationIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LocationIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (rhumbAzimuth == null) {
-			String msg = Logging.getMessage("nullValue.AzimuthIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.AzimuthIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (pathLength == null) {
-			String msg = Logging.getMessage("nullValue.PathLengthIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.PathLengthIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -460,8 +462,8 @@ public class LatLon {
 
 	public LatLon set(LatLon location) {
 		if (location == null) {
-			String msg = Logging.getMessage("nullValue.LocationIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LocationIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
@@ -473,14 +475,14 @@ public class LatLon {
 
 	public LatLon set(Angle latitude, Angle longitude) {
 		if (latitude == null) {
-			String msg = Logging.getMessage("nullValue.LatitudeIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LatitudeIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 
 		if (longitude == null) {
-			String msg = Logging.getMessage("nullValue.LongitudeIsNull");
-			Logging.error(msg);
+			String msg = Messages.getMessage("nullValue.LongitudeIsNull");
+			Log.e("NWW_ANDROID", msg);
 			throw new IllegalArgumentException(msg);
 		}
 

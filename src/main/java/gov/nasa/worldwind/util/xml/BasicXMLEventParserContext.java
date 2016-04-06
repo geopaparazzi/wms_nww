@@ -18,8 +18,10 @@
 
 package gov.nasa.worldwind.util.xml;
 
+import android.util.Log;
+
 import gov.nasa.worldwind.avlist.AVListImpl;
-import gov.nasa.worldwind.util.Logging;
+import gov.nasa.worldwind.util.Messages;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
@@ -117,13 +119,13 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 				String msg;
 				if (notification.getEvent() != null) {
-					msg = Logging.getMessage(notification.getMessage(), notification.getEvent().toString(), notification.getEvent().getLineNumber());
+					msg = Messages.getMessage(notification.getMessage(), notification.getEvent().toString(), notification.getEvent().getLineNumber());
 				} else {
-					msg = Logging.getMessage(notification.getMessage(), "", "");
+					msg = Messages.getMessage(notification.getMessage(), "", "");
 				}
 
-				if (notification.getPropertyName().equals(XMLParserNotification.EXCEPTION)) Logging.warning(msg);
-				else if (notification.getPropertyName().equals(XMLParserNotification.UNRECOGNIZED)) Logging.warning(msg);
+				if (notification.getPropertyName().equals(XMLParserNotification.EXCEPTION)) Log.w("NWW_ANDROID", msg);
+				else if (notification.getPropertyName().equals(XMLParserNotification.UNRECOGNIZED)) Log.w("NWW_ANDROID", msg);
 			}
 		});
 	}
@@ -233,8 +235,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 	 */
 	public void setEventReader(XMLEventReader reader) {
 		if (reader == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull"); // TODO
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull"); // TODO
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -289,8 +291,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	protected XMLEventParser getParser(XMLEvent event, XMLEventParser defaultParser) {
 		if (event == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -345,8 +347,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	public String getCharacters(XMLEvent event) {
 		if (event == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -371,14 +373,14 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	public boolean isStartElement(XMLEvent event, QName elementName) {
 		if (event == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
 		if (elementName == null) {
-			String message = Logging.getMessage("nullValue.ElementNameIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ElementNameIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -387,8 +389,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	public boolean isEndElement(XMLEvent event, XMLEvent startElement) {
 		if (event == null || startElement == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -397,8 +399,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	public static boolean isEndElementEvent(XMLEvent event, XMLEvent startElement) {
 		if (event == null || startElement == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -407,14 +409,14 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	public void registerParser(QName elementName, XMLEventParser parser) {
 		if (parser == null) {
-			String message = Logging.getMessage("nullValue.ParserIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ParserIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
 		if (elementName == null) {
-			String message = Logging.getMessage("nullValue.ElementNameIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ElementNameIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -423,8 +425,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 	public XMLEventParser getParser(QName name) {
 		if (name == null) {
-			String message = Logging.getMessage("nullValue.ElementNameIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ElementNameIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -447,8 +449,8 @@ public class BasicXMLEventParserContext extends AVListImpl implements XMLEventPa
 
 			return factoryParser.newInstance();
 		} catch (Exception e) {
-			String message = Logging.getMessage("XML.ParserCreationException", name);
-			Logging.warning(message, e);
+			String message = Messages.getMessage("XML.ParserCreationException", name);
+			Log.w("NWW_ANDROID", message, e);
 			return null;
 		}
 	}

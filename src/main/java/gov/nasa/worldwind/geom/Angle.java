@@ -5,7 +5,9 @@
  */
 package gov.nasa.worldwind.geom;
 
-import gov.nasa.worldwind.util.Logging;
+import android.util.Log;
+
+import gov.nasa.worldwind.util.Messages;
 
 /**
  * @author dcollins
@@ -74,8 +76,8 @@ public class Angle
     {
         if (angle == null)
         {
-            String msg = Logging.getMessage("nullValue.AngleIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.AngleIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -159,8 +161,8 @@ public class Angle
     {
         if (angle == null)
         {
-            String msg = Logging.getMessage("nullValue.AngleIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.AngleIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -203,8 +205,8 @@ public class Angle
     {
         if (angle == null)
         {
-            String msg = Logging.getMessage("nullValue.AngleIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.AngleIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -215,15 +217,15 @@ public class Angle
     {
         if (lhs == null)
         {
-            String msg = Logging.getMessage("nullValue.LhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (rhs == null)
         {
-            String msg = Logging.getMessage("nullValue.RhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.RhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -244,8 +246,8 @@ public class Angle
     {
         if (angle == null)
         {
-            String msg = Logging.getMessage("nullValue.AngleIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.AngleIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -275,8 +277,8 @@ public class Angle
     {
         if (angle == null)
         {
-            String msg = Logging.getMessage("nullValue.AngleIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.AngleIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -287,15 +289,15 @@ public class Angle
     {
         if (lhs == null)
         {
-            String msg = Logging.getMessage("nullValue.LhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (rhs == null)
         {
-            String msg = Logging.getMessage("nullValue.RhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.RhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -334,8 +336,8 @@ public class Angle
     {
         if (angle == null)
         {
-            String msg = Logging.getMessage("nullValue.AngleIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.AngleIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -356,15 +358,15 @@ public class Angle
     {
         if (lhs == null)
         {
-            String msg = Logging.getMessage("nullValue.LhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (rhs == null)
         {
-            String msg = Logging.getMessage("nullValue.RhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.RhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 

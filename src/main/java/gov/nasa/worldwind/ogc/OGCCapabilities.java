@@ -18,8 +18,10 @@
 
 package gov.nasa.worldwind.ogc;
 
+import android.util.Log;
+
 import gov.nasa.worldwind.avlist.AVList;
-import gov.nasa.worldwind.util.Logging;
+import gov.nasa.worldwind.util.Messages;
 import gov.nasa.worldwind.util.WWXML;
 import gov.nasa.worldwind.util.xml.AbstractXMLEventParser;
 import gov.nasa.worldwind.util.xml.BasicXMLEventParserContext;
@@ -114,8 +116,8 @@ abstract public class OGCCapabilities extends AbstractXMLEventParser {
 	/** {@inheritDoc} */
 	public XMLEventParser allocate(XMLEventParserContext ctx, XMLEvent event) {
 		if (ctx == null) {
-			String message = Logging.getMessage("nullValue.ParserContextIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ParserContextIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 

@@ -4,7 +4,9 @@ All Rights Reserved.
 */
 package gov.nasa.worldwind.geom;
 
-import gov.nasa.worldwind.util.Logging;
+import android.util.Log;
+
+import gov.nasa.worldwind.util.Messages;
 
 import java.util.*;
 
@@ -68,15 +70,15 @@ public class Position extends LatLon
     {
         if (lhs == null)
         {
-            String msg = Logging.getMessage("nullValue.LhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (rhs == null)
         {
-            String msg = Logging.getMessage("nullValue.RhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.RhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -107,15 +109,15 @@ public class Position extends LatLon
     {
         if (lhs == null)
         {
-            String msg = Logging.getMessage("nullValue.LhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (rhs == null)
         {
-            String msg = Logging.getMessage("nullValue.RhsIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.RhsIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -150,22 +152,22 @@ public class Position extends LatLon
     {
         if (oldPosition == null)
         {
-            String msg = Logging.getMessage("nullValue.OldPositionIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.OldPositionIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (newPosition == null)
         {
-            String msg = Logging.getMessage("nullValue.NewPositionIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.NewPositionIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (iterable == null)
         {
-            String msg = Logging.getMessage("nullValue.IterableIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.IterableIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -197,8 +199,8 @@ public class Position extends LatLon
     {
         if (position == null)
         {
-            String msg = Logging.getMessage("nullValue.PositionIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.PositionIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -212,8 +214,8 @@ public class Position extends LatLon
     {
         if (location == null)
         {
-            String msg = Logging.getMessage("nullValue.LocationIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LocationIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -227,15 +229,15 @@ public class Position extends LatLon
     {
         if (latitude == null)
         {
-            String msg = Logging.getMessage("nullValue.LatitudeIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LatitudeIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (longitude == null)
         {
-            String msg = Logging.getMessage("nullValue.LongitudeIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.LongitudeIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 

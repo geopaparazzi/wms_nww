@@ -17,6 +17,8 @@
  */
 package gov.nasa.worldwind.util;
 
+import android.util.Log;
+
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParser;
@@ -80,8 +82,8 @@ public class WWXML {
 		try {
 			return docBuilderFactory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			String msg = Logging.getMessage("XML.ParserConfigurationException");
-			Logging.verbose(msg);
+			String msg = Messages.getMessage("XML.ParserConfigurationException");
+			Log.v("NWW_ANDROID", msg);
 			throw new WWRuntimeException(msg, e);
 		}
 	}
@@ -102,7 +104,7 @@ public class WWXML {
 	 */
 	public static Document openDocument(Object source) {
 		if (source == null || WWUtil.isEmpty(source)) {
-			throw new IllegalArgumentException(Logging.getMessage("nullValue.SourceIsNull"));
+			throw new IllegalArgumentException(Messages.getMessage("nullValue.SourceIsNull"));
 		}
 
 //		if (source instanceof URL) {
@@ -181,14 +183,14 @@ public class WWXML {
 	 */
 	public static Document openDocumentURL(URL url) {
 		if (url == null) {
-			throw new IllegalArgumentException(Logging.getMessage("nullValue.UrlIsNull"));
+			throw new IllegalArgumentException(Messages.getMessage("nullValue.UrlIsNull"));
 		}
 
 		try {
 			InputStream inputStream = url.openStream();
 			return openDocumentStream(inputStream);
 		} catch (IOException e) {
-			throw new WWRuntimeException(Logging.getMessage("XML.ExceptionParsingXml", url), e);
+			throw new WWRuntimeException(Messages.getMessage("XML.ExceptionParsingXml", url), e);
 		}
 	}
 
@@ -210,15 +212,15 @@ public class WWXML {
 
 	public static Document openDocumentStream(InputStream inputStream, boolean isNamespaceAware) {
 		if (inputStream == null) {
-			throw new IllegalArgumentException(Logging.getMessage("nullValue.InputStreamIsNull"));
+			throw new IllegalArgumentException(Messages.getMessage("nullValue.InputStreamIsNull"));
 		}
 
 		try {
 			return WWXML.createDocumentBuilder(isNamespaceAware).parse(inputStream);
 		} catch (SAXException e) {
-			throw new WWRuntimeException(Logging.getMessage("XML.ExceptionParsingXml", inputStream), e);
+			throw new WWRuntimeException(Messages.getMessage("XML.ExceptionParsingXml", inputStream), e);
 		} catch (IOException e) {
-			throw new WWRuntimeException(Logging.getMessage("XML.ExceptionParsingXml", inputStream), e);
+			throw new WWRuntimeException(Messages.getMessage("XML.ExceptionParsingXml", inputStream), e);
 		}
 	}
 
@@ -238,13 +240,13 @@ public class WWXML {
 //	public static void saveDocumentToFile(Document doc, String filePath) {
 //		if (doc == null) {
 //			String message = Logging.getMessage("nullValue.DocumentIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (filePath == null) {
 //			String message = Logging.getMessage("nullValue.FilePathIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -254,7 +256,7 @@ public class WWXML {
 //			saveDocumentToStream(doc, outputStream);
 //		} catch (IOException e) {
 //			String message = Logging.getMessage("generic.ExceptionAttemptingToWriteXml", filePath);
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new WWRuntimeException(e);
 //		}
 //	}
@@ -275,13 +277,13 @@ public class WWXML {
 //	public static void saveDocumentToStream(Document doc, OutputStream outputStream) {
 //		if (doc == null) {
 //			String message = Logging.getMessage("nullValue.DocumentIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (outputStream == null) {
 //			String message = Logging.getMessage("nullValue.OutputStreamIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -293,7 +295,7 @@ public class WWXML {
 //			transformer.transform(source, result);
 //		} catch (TransformerException e) {
 //			String message = Logging.getMessage("generic.ExceptionAttemptingToWriteXml", outputStream);
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new WWRuntimeException(e);
 //		}
 //	}
@@ -322,7 +324,7 @@ public class WWXML {
 //			return transformerFactory.newTransformer();
 //		} catch (TransformerConfigurationException e) {
 //			String message = Logging.getMessage("XML.TransformerConfigurationException");
-//			Logging.verbose(message);
+//			Log.v("NWW_ANDROID",message);
 //			throw new WWRuntimeException(e);
 //		}
 //	}
@@ -625,13 +627,13 @@ public class WWXML {
 //	public static Long getLong(Element context, String path, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (path == null) {
 //			String message = Logging.getMessage("nullValue.PathIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -715,7 +717,7 @@ public class WWXML {
 //	// if (context == null)
 //	// {
 //	// String message = Logging.getMessage("nullValue.ContextIsNull");
-//	// Logging.error(message);
+//	// Log.e("NWW_ANDROID", message);
 //	// throw new IllegalArgumentException(message);
 //	// }
 //	//
@@ -793,7 +795,7 @@ public class WWXML {
 //	public static Long getTimeInMillis(Element context, String path, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -847,13 +849,13 @@ public class WWXML {
 //	public static Long getDateTimeInMillis(Element context, String path, String pattern, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (WWUtil.isEmpty(pattern)) {
 //			String message = Logging.getMessage("nullValue.PatternIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -893,13 +895,13 @@ public class WWXML {
 //	public static String[] getTextArray(Element context, String path, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (path == null) {
 //			String message = Logging.getMessage("nullValue.PathIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -938,13 +940,13 @@ public class WWXML {
 //	public static String[] getUniqueText(Element context, String path, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (path == null) {
 //			String message = Logging.getMessage("nullValue.PathIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -981,7 +983,7 @@ public class WWXML {
 //	public static LevelSet.SectorResolution getSectorResolutionLimit(Element context, String path, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1012,13 +1014,13 @@ public class WWXML {
 //	public static void setTextAttribute(Element context, String name, String value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (WWUtil.isEmpty(name)) {
 //			String message = Logging.getMessage("nullValue.NameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1043,13 +1045,13 @@ public class WWXML {
 //	public static Element setDocumentElement(Document doc, String name) {
 //		if (doc == null) {
 //			String message = Logging.getMessage("nullValue.DocumentIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (WWUtil.isEmpty(name)) {
 //			String message = Logging.getMessage("nullValue.NameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1083,13 +1085,13 @@ public class WWXML {
 //	public static void setIntegerAttribute(Element context, String name, int value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (name == null) {
 //			String message = Logging.getMessage("nullValue.NameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1112,13 +1114,13 @@ public class WWXML {
 //	public static void setLongAttribute(Element context, String name, long value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (name == null) {
 //			String message = Logging.getMessage("nullValue.NameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1141,13 +1143,13 @@ public class WWXML {
 //	public static void setDoubleAttribute(Element context, String name, double value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (name == null) {
 //			String message = Logging.getMessage("nullValue.NameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1172,7 +1174,7 @@ public class WWXML {
 //	public static Element appendBoolean(Element context, String path, boolean value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1197,7 +1199,7 @@ public class WWXML {
 //	public static Element appendInteger(Element context, String path, int value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1222,7 +1224,7 @@ public class WWXML {
 //	public static Element appendLong(Element context, String path, long value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1247,7 +1249,7 @@ public class WWXML {
 //	public static Element appendDouble(Element context, String path, double value) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1272,7 +1274,7 @@ public class WWXML {
 //	public static Element appendElementPath(Element context, String path) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1320,13 +1322,13 @@ public class WWXML {
 //	public static Element appendText(Element context, String path, String string) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (string == null) {
 //			String message = Logging.getMessage("nullValue.StringIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1357,7 +1359,7 @@ public class WWXML {
 //	public static Element appendTimeInMillis(Element context, String path, long timeInMillis) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1387,13 +1389,13 @@ public class WWXML {
 //	public static Element[] appendTextArray(Element context, String path, String[] strings) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (strings == null) {
 //			String message = Logging.getMessage("nullValue.ArrayIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1428,13 +1430,13 @@ public class WWXML {
 //	public static Element appendLatLon(Element context, String path, LatLon ll) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (ll == null) {
 //			String message = Logging.getMessage("nullValue.LatLonIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1464,13 +1466,13 @@ public class WWXML {
 //	public static Element appendSector(Element context, String path, Sector sector) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (sector == null) {
 //			String message = Logging.getMessage("nullValue.SectorIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1500,13 +1502,13 @@ public class WWXML {
 //	public static Element appendSectorResolutionLimit(Element context, String path, LevelSet.SectorResolution sectorResolution) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ContextIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (sectorResolution == null) {
 //			String message = Logging.getMessage("nullValue.LevelSet.SectorResolutionIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1535,19 +1537,19 @@ public class WWXML {
 //	public static void checkAndAppendTextElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1575,19 +1577,19 @@ public class WWXML {
 //	public static void checkAndAppendTimeElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1616,19 +1618,19 @@ public class WWXML {
 //	public static void checkAndAppendBooleanElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1656,19 +1658,19 @@ public class WWXML {
 //	public static void checkAndAppendDoubleElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1696,19 +1698,19 @@ public class WWXML {
 //	public static void checkAndAppendLongElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1740,25 +1742,25 @@ public class WWXML {
 //	public static void checkAndSetBooleanParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1791,25 +1793,25 @@ public class WWXML {
 //	public static void checkAndSetStringParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1842,25 +1844,25 @@ public class WWXML {
 //	public static void checkAndSetIntegerParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1893,25 +1895,25 @@ public class WWXML {
 //	public static void checkAndSetLongParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1947,31 +1949,31 @@ public class WWXML {
 //	public static void checkAndSetDateTimeParam(Element context, AVList params, String paramKey, String paramName, String pattern, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (WWUtil.isEmpty(pattern)) {
 //			String message = Logging.getMessage("nullValue.PatternIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -1988,28 +1990,28 @@ public class WWXML {
 //	// if (context == null)
 //	// {
 //	// String message = Logging.getMessage("nullValue.ElementIsNull");
-//	// Logging.error(message);
+//	// Log.e("NWW_ANDROID", message);
 //	// throw new IllegalArgumentException(message);
 //	// }
 //	//
 //	// if (params == null)
 //	// {
 //	// String message = Logging.getMessage("nullValue.ParametersIsNull");
-//	// Logging.error(message);
+//	// Log.e("NWW_ANDROID", message);
 //	// throw new IllegalArgumentException(message);
 //	// }
 //	//
 //	// if (paramKey == null)
 //	// {
 //	// String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//	// Logging.error(message);
+//	// Log.e("NWW_ANDROID", message);
 //	// throw new IllegalArgumentException(message);
 //	// }
 //	//
 //	// if (paramName == null)
 //	// {
 //	// String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//	// Logging.error(message);
+//	// Log.e("NWW_ANDROID", message);
 //	// throw new IllegalArgumentException(message);
 //	// }
 //	//
@@ -2056,25 +2058,25 @@ public class WWXML {
 //	public static void checkAndSetSectorParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2107,25 +2109,25 @@ public class WWXML {
 //	public static void checkAndSetSectorResolutionParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2167,25 +2169,25 @@ public class WWXML {
 //	public static void checkAndSetLatLonParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2218,25 +2220,25 @@ public class WWXML {
 //	public static void checkAndSetTimeParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2269,25 +2271,25 @@ public class WWXML {
 //	public static void checkAndSetUniqueStringsParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2320,25 +2322,25 @@ public class WWXML {
 //	public static void checkAndSetDoubleParam(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2371,25 +2373,25 @@ public class WWXML {
 //	public static void checkAndSetTimeParamAsInteger(Element context, AVList params, String paramKey, String paramName, XPath xpath) {
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramName == null) {
 //			String message = Logging.getMessage("nullValue.ParameterNameIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2418,19 +2420,19 @@ public class WWXML {
 //	public static void checkAndAppendSectorElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2458,19 +2460,19 @@ public class WWXML {
 //	public static void checkAndAppendSectorResolutionElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2504,19 +2506,19 @@ public class WWXML {
 //	public static void checkAndAppendLatLonElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2544,19 +2546,19 @@ public class WWXML {
 //	public static void checkAndAppendIntegerElement(AVList params, String paramKey, Element context, String path) {
 //		if (params == null) {
 //			String message = Logging.getMessage("nullValue.ParametersIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (paramKey == null) {
 //			String message = Logging.getMessage("nullValue.ParameterKeyIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
 //		if (context == null) {
 //			String message = Logging.getMessage("nullValue.ElementIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2649,7 +2651,7 @@ public class WWXML {
 //	public static String parseDataType(String s) {
 //		if (s == null) {
 //			String message = Logging.getMessage("nullValue.StringIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2691,7 +2693,7 @@ public class WWXML {
 //	public static String byteOrderAsText(String byteOrder) {
 //		if (byteOrder == null) {
 //			String message = Logging.getMessage("nullValue.ByteOrderIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2739,7 +2741,7 @@ public class WWXML {
 //	public static String dataTypeAsText(String dataType) {
 //		if (dataType == null) {
 //			String message = Logging.getMessage("nullValue.DataTypeIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2781,7 +2783,7 @@ public class WWXML {
 //	public static String parseByteOrder(String s) {
 //		if (s == null) {
 //			String message = Logging.getMessage("nullValue.StringIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2799,7 +2801,7 @@ public class WWXML {
 //	public static String fixGetMapString(String gms) {
 //		if (gms == null) {
 //			String message = Logging.getMessage("nullValue.StringIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2844,8 +2846,8 @@ public class WWXML {
      */
     public static XMLEventReader openEventReader(Object docSource, boolean isNamespaceAware) {
         if (docSource == null || WWUtil.isEmpty(docSource)) {
-            String message = Logging.getMessage("nullValue.DocumentSourceIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.DocumentSourceIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -2859,8 +2861,8 @@ public class WWXML {
 //			InputStream is = WWIO.getInputStreamFromByteBuffer((java.nio.ByteBuffer) docSource);
 //			return openEventReaderStream(is, isNamespaceAware);
         } else if (!(docSource instanceof String)) {
-            String message = Logging.getMessage("generic.UnrecognizedSourceType", docSource.toString());
-            Logging.error(message);
+            String message = Messages.getMessage("generic.UnrecognizedSourceType", docSource.toString());
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -2885,8 +2887,8 @@ public class WWXML {
      */
     public static XMLEventReader openEventReader(URL url, boolean isNamespaceAware) {
         if (url == null) {
-            String message = Logging.getMessage("nullValue.URLIsNull"); // TODO
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.URLIsNull"); // TODO
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -2894,7 +2896,7 @@ public class WWXML {
             InputStream inputStream = url.openStream();
             return openEventReaderStream(inputStream, isNamespaceAware);
         } catch (Exception e) {
-            String message = Logging.getMessage("generic.ExceptionAttemptingToParseXml", url.toString()); // TODO
+            String message = Messages.getMessage("generic.ExceptionAttemptingToParseXml", url.toString()); // TODO
             throw new WWRuntimeException(message, e);
         }
     }
@@ -2911,8 +2913,8 @@ public class WWXML {
      */
     public static XMLEventReader openEventReaderStream(InputStream inputStream, boolean isNamespaceAware) {
         if (inputStream == null) {
-            String message = Logging.getMessage("nullValue.InputStreamIsNull"); // TODO
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.InputStreamIsNull"); // TODO
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -2925,7 +2927,7 @@ public class WWXML {
 
             return new XMLEventReader(pullParser);
         } catch (XmlPullParserException e) {
-            String message = Logging.getMessage("generic.ExceptionAttemptingToParseXml", inputStream); // TODO
+            String message = Messages.getMessage("generic.ExceptionAttemptingToParseXml", inputStream); // TODO
             throw new WWRuntimeException(message, e);
         }
     }
@@ -2950,7 +2952,7 @@ public class WWXML {
 //	public static XMLEventReader openEventReaderFile(String filePath, Class<WWIO> c, boolean isNamespaceAware) {
 //		if (filePath == null) {
 //			String message = Logging.getMessage("nullValue.FileIsNull");
-//			Logging.error(message);
+//			Log.e("NWW_ANDROID", message);
 //			throw new IllegalArgumentException(message);
 //		}
 //
@@ -2972,8 +2974,8 @@ public class WWXML {
      */
     public static XMLEventReader openEventReaderURL(URL url, boolean isNamespaceAware) {
         if (url == null) {
-            String message = Logging.getMessage("nullValue.URLIsNull");
-            Logging.error(message);
+            String message = Messages.getMessage("nullValue.URLIsNull");
+            Log.e("NWW_ANDROID", message);
             throw new IllegalArgumentException(message);
         }
 
@@ -2981,7 +2983,7 @@ public class WWXML {
             InputStream inputStream = url.openStream();
             return openEventReaderStream(inputStream, isNamespaceAware);
         } catch (IOException e) {
-            String message = Logging.getMessage("generic.ExceptionAttemptingToParseXml", url.toString());
+            String message = Messages.getMessage("generic.ExceptionAttemptingToParseXml", url.toString());
             throw new WWRuntimeException(message, e);
         }
     }

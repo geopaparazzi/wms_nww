@@ -18,9 +18,11 @@
 
 package gov.nasa.worldwind.util.xml;
 
+import android.util.Log;
+
 import gov.nasa.worldwind.avlist.AVList;
 import gov.nasa.worldwind.avlist.AVListImpl;
-import gov.nasa.worldwind.util.Logging;
+import gov.nasa.worldwind.util.Messages;
 import gov.nasa.worldwind.util.WWUtil;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -181,8 +183,8 @@ public class AbstractXMLEventParser implements XMLEventParser {
 	 */
 	public XMLEventParser allocate(XMLEventParserContext ctx, XMLEvent event) {
 		if (ctx == null) {
-			String message = Logging.getMessage("nullValue.ParserContextIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ParserContextIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
@@ -195,14 +197,14 @@ public class AbstractXMLEventParser implements XMLEventParser {
 	/** {@inheritDoc} */
 	public Object parse(XMLEventParserContext ctx, XMLEvent inputEvent, Object... args) throws XMLParserException {
 		if (ctx == null) {
-			String message = Logging.getMessage("nullValue.ParserContextIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.ParserContextIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 
 		if (inputEvent == null) {
-			String message = Logging.getMessage("nullValue.EventIsNull");
-			Logging.error(message);
+			String message = Messages.getMessage("nullValue.EventIsNull");
+			Log.e("NWW_ANDROID", message);
 			throw new IllegalArgumentException(message);
 		}
 

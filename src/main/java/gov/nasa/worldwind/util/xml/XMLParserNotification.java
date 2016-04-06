@@ -4,7 +4,7 @@
 
 package gov.nasa.worldwind.util.xml;
 
-import gov.nasa.worldwind.util.Logging;
+import gov.nasa.worldwind.util.Messages;
 import java.beans.PropertyChangeEvent;
 
 /**
@@ -122,9 +122,9 @@ public class XMLParserNotification extends PropertyChangeEvent {
 		String msg;
 
 		if (this.event != null) {
-			msg = Logging.getMessage(this.message, this.event.toString(), this.event.getLineNumber());
+			msg = Messages.getMessage(this.message, this.event.toString(), this.event.getLineNumber());
 		} else {
-			msg = Logging.getMessage(this.message, "", "", "");
+			msg = Messages.getMessage(this.message, "", "", "");
 		}
 
 		return this.notificationType.substring(1 + this.notificationType.lastIndexOf(".")) + ": " + msg;

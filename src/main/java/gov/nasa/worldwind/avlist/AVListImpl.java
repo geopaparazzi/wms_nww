@@ -17,6 +17,8 @@
  */
 package gov.nasa.worldwind.avlist;
 
+import android.util.Log;
+
 import gov.nasa.worldwind.exception.WWRuntimeException;
 import gov.nasa.worldwind.util.*;
 
@@ -63,8 +65,8 @@ public class AVListImpl implements AVList
     {
         if (key == null)
         {
-            String msg = Logging.getMessage("nullValue.KeyIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.KeyIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -78,8 +80,8 @@ public class AVListImpl implements AVList
     {
         if (key == null)
         {
-            String msg = Logging.getMessage("nullValue.KeyIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.KeyIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalStateException(msg);
         }
         try
@@ -88,8 +90,8 @@ public class AVListImpl implements AVList
         }
         catch (ClassCastException e)
         {
-            String msg = Logging.getMessage("generic.ValueForKeyIsNotAString", key, this.getValue(key));
-            Logging.error(msg);
+            String msg = Messages.getMessage("generic.ValueForKeyIsNotAString", key, this.getValue(key));
+            Log.e("NWW_ANDROID", msg);
             throw new WWRuntimeException(msg, e);
         }
     }
@@ -98,8 +100,8 @@ public class AVListImpl implements AVList
     {
         if (key == null)
         {
-            String msg = Logging.getMessage("nullValue.KeyIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.KeyIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -115,8 +117,8 @@ public class AVListImpl implements AVList
     {
         if (list == null)
         {
-            String msg = Logging.getMessage("nullValue.ListIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.ListIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -138,8 +140,8 @@ public class AVListImpl implements AVList
     {
         if (key == null)
         {
-            String msg = Logging.getMessage("nullValue.KeyIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.KeyIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -150,8 +152,8 @@ public class AVListImpl implements AVList
     {
         if (key == null)
         {
-            String msg = Logging.getMessage("nullValue.KeyIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.KeyIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -207,15 +209,15 @@ public class AVListImpl implements AVList
     {
         if (propertyName == null)
         {
-            String msg = Logging.getMessage("nullValue.PropertyNameIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.PropertyNameIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
         if (listener == null)
         {
-            String msg = Logging.getMessage("nullValue.ListenerIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.ListenerIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -226,14 +228,14 @@ public class AVListImpl implements AVList
     {
         if (propertyName == null)
         {
-            String msg = Logging.getMessage("nullValue.PropertyNameIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.PropertyNameIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
         if (listener == null)
         {
-            String msg = Logging.getMessage("nullValue.ListenerIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.ListenerIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -244,8 +246,8 @@ public class AVListImpl implements AVList
     {
         if (listener == null)
         {
-            String msg = Logging.getMessage("nullValue.ListenerIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.ListenerIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -256,8 +258,8 @@ public class AVListImpl implements AVList
     {
         if (listener == null)
         {
-            String msg = Logging.getMessage("nullValue.ListenerIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.ListenerIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -268,8 +270,8 @@ public class AVListImpl implements AVList
     {
         if (propertyName == null)
         {
-            String msg = Logging.getMessage("nullValue.PropertyNameIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.PropertyNameIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -280,8 +282,8 @@ public class AVListImpl implements AVList
     {
         if (event == null)
         {
-            String msg = Logging.getMessage("nullValue.EventIsNull");
-            Logging.error(msg);
+            String msg = Messages.getMessage("nullValue.EventIsNull");
+            Log.e("NWW_ANDROID", msg);
             throw new IllegalArgumentException(msg);
         }
 
@@ -340,7 +342,7 @@ public class AVListImpl implements AVList
         }
         catch (NumberFormatException e)
         {
-            Logging.error(Logging.getMessage("generic.ConversionError", o));
+            Log.e("NWW_ANDROID", Messages.getMessage("generic.ConversionError", o));
             return null;
         }
     }
@@ -376,7 +378,7 @@ public class AVListImpl implements AVList
         }
         catch (NumberFormatException e)
         {
-            Logging.error("Configuration.ConversionError", v);
+            Log.e("NWW_ANDROID", "Configuration.ConversionError" + v, e);
             return null;
         }
     }
@@ -400,7 +402,7 @@ public class AVListImpl implements AVList
         }
         catch (NumberFormatException e)
         {
-            Logging.error(Logging.getMessage("Configuration.ConversionError", v));
+            Log.e("NWW_ANDROID", "Configuration.ConversionError" + v, e);
             return null;
         }
     }
