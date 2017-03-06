@@ -34,6 +34,7 @@ import java.util.TreeSet;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.os.AsyncTask;
 import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -68,6 +69,8 @@ public class AddWMSDialog extends DialogFragment {
     private OnWMSLayersAddedListener wmsLayersAddedListener;
     private String baseUrl;
     private String forcedWmsVersion;
+
+
 
     public interface OnWMSLayersAddedListener {
         void onWMSLayersAdded(String baseUrl, String forcedWmsVersion, List<LayerInfo> layersToAdd);
@@ -167,8 +170,32 @@ public class AddWMSDialog extends DialogFragment {
                         retval.add(info);
                     }
                 }
-                if (null != wmsLayersAddedListener) {
+                if (null != wmsLayersAddedListener && baseUrl != null) {
                     wmsLayersAddedListener.onWMSLayersAdded(baseUrl, forcedWmsVersion, retval);
+                } else {
+                    new AsyncTask<String, Void, String>() {
+                        protected String doInBackground(String... params) {
+                            return ""; //$NON-NLS-1$
+                        }
+
+                        protected void onPostExecute(String response) {
+                            try {
+                                int icon = android.R.drawable.ic_dialog_alert;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder //
+                                        .setMessage("An error occurred while retrieving the WMS base url.")
+                                        .setIcon(icon).setCancelable(true)
+                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                            }
+                                        });
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                            } catch (Exception e) {
+                                Log.e("AddWMSDialog", "Error in " + e.getLocalizedMessage());
+                            }
+                        }
+                    }.execute((String) null);
                 }
             }
         });
