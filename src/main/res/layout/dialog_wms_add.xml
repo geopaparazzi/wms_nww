@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_add_wms_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     android:showDividers="middle|beginning"
-    tools:context=".dialogs.WMSListDialog">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,15 +19,14 @@
 
         <ImageButton
             android:id="@+id/get_capabilities_btn"
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="@dimen/min_touch_size"
             android:layout_height="@dimen/min_touch_size"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
-
             android:text="@string/btn_get_capabilities"
-            android:background="@drawable/ic_autorenew_24dp">
+            android:background="@null"
+            app:srcCompat="@drawable/ic_autorenew_24dp">
 
             <requestFocus />
         </ImageButton>
@@ -42,7 +42,7 @@
             android:layout_centerVertical="true"
             android:labelFor="@+id/wms_url_et">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/wms_url_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         android:id="@+id/wms_layerslistview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@android:color/holo_orange_dark"
+        android:divider="#000000"
         android:dividerHeight="1dp"
         android:fastScrollEnabled="true">
 

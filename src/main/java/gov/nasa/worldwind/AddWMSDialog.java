@@ -40,6 +40,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +70,6 @@ public class AddWMSDialog extends DialogFragment {
     private OnWMSLayersAddedListener wmsLayersAddedListener;
     private String baseUrl;
     private String forcedWmsVersion;
-
 
 
     public interface OnWMSLayersAddedListener {
@@ -130,7 +130,9 @@ public class AddWMSDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(urlEditText.getWindowToken(), 0);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(urlEditText.getWindowToken(), 0);
+                }
                 final String WMSURLtoUSE = urlEditText.getText().toString();
                 // TODO Should Check url validity before starting to download WMS capabilities
                 if (downloadThread == null) {
@@ -141,15 +143,17 @@ public class AddWMSDialog extends DialogFragment {
                         public void run() {
                             downloadCapabilities(WMSURLtoUSE);
                             downloadThread = null;
-                            AddWMSDialog.this.getActivity().runOnUiThread(new Runnable() {
+                            FragmentActivity activity = AddWMSDialog.this.getActivity();
+                            if (activity != null)
+                                activity.runOnUiThread(new Runnable() {
 
-                                @Override
-                                public void run() {
-                                    // update listVIew
-                                    updateLayerInfoList(getActivity());
-                                    getCapabilitiesButton.setEnabled(true);
-                                }
-                            });
+                                    @Override
+                                    public void run() {
+                                        // update listVIew
+                                        updateLayerInfoList(getActivity());
+                                        getCapabilitiesButton.setEnabled(true);
+                                    }
+                                });
                         }
                     });
                     downloadThread.start();
